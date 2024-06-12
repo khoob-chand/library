@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"bladeFormatter.format.indentInnerHtml": true,
+		"bladeFormatter.format.noMultipleEmptyLines": true,
+		"bladeFormatter.format.noPhpSyntaxCheck": true,
+		"bladeFormatter.format.sortTailwindcssClasses": true,
+		"bladeFormatter.format.useTabs": true
+	}
+}

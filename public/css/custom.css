@@ -1,0 +1,32 @@
+.card img {
+    width:180px;
+    height:150px;
+}
+.slick-prev:before ,.slick-next:before {
+    color:black!important;
+}
+.card {
+    border:none!important;
+}
+thead
+{
+    background-color: rgb(82, 81, 81);
+    color: white;
+    text-align: center;
+    padding: 0px !important;
+}
+.dt-column-order:after {
+    color: white!important;
+}
+.dt-column-order:before {
+    color: white !important;
+}
+table.dataTable>tbody>tr>td {
+    padding: 3px!important;
+    border-bottom: 0px solid rgba(0, 0, 0, 0.3)!important;
+    cursor: pointer!important;
+}
+a{
+    cursor:pointer!important;
+}
+
