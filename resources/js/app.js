@@ -33,7 +33,7 @@ $('form').on('submit', function(e) {
 
 var studentSlots =$("#studentSlot").val();
 
-console.log(studentSlots,"studentSlots")
+// console.log(studentSlots,"studentSlots")
     var student_table =$('#student').DataTable({
         "processing": true,
         "serverSide": false,
@@ -60,6 +60,7 @@ console.log(studentSlots,"studentSlots")
             { "data": "state" },
             { "data": "address" },
             { "data": "timeslot" },
+            { "data": "seat_no" },
         ]
     });
     $("#studentSlot").on('change',function(e){
@@ -242,8 +243,6 @@ console.log(studentSlots,"studentSlots")
         ]
     });
 
-
-
         let cropper;
         $('#file').on('change', function(event) {
             const input = event.target;
@@ -261,6 +260,7 @@ console.log(studentSlots,"studentSlots")
                         autoCrop: true,
                         crop: function(event) {
                             $(".cropimage").removeClass('d-none')
+                            $(".full-image-crop").removeClass('d-none');
                             const canvas = cropper.getCroppedCanvas({
                                 width: 200,
                                 height: 150
@@ -274,14 +274,12 @@ console.log(studentSlots,"studentSlots")
                 reader.readAsDataURL(input.files[0]);
             }
         });
-
-
-
         $("#saveSettingServiceBtnId").on('click',function(e){
             e.preventDefault();
+
             $(this).prop('disabled',true)
             $('.spinner-border').removeClass('d-none');
-            $("#service_id").val('');
+
             if($("#title").val()==""){
                 $('.title').text('Please Enter Your title')
                 return false
@@ -302,7 +300,6 @@ console.log(studentSlots,"studentSlots")
                 return false
             }else{
                 $('.file').text('')
-
             }
             var formData = new FormData($('#settingsServiceForm')[0]);
             $.ajax({
@@ -381,9 +378,7 @@ $("#addSettingServiceBtnId").on('click',function(e){
     $("#settingsServiceForm")[0].reset();
     $(".cropimage").addClass('d-none');
     $(".full-image-crop").addClass('d-none');
-
-
-
+    $("#settingsServiceForm input[type='hidden']").val('');
 })
 $("#editSettingServiceBtnId").on('click',function(e){
 
@@ -404,7 +399,7 @@ $("#deleteSettingServiceBtnId").on('click',function(e){
             var id =$("#service_id").val();
             $.ajax({
                 url:"/api/del-setting-service",
-                type:"delete",
+                type:"post",
                 data:{id:id},
                 dataType:'json',
                 success:function(response){

@@ -24,21 +24,12 @@
     </div>
 
     <div class="mb-3 col-md-3">
-        <label for="studentFess" class="form-label  d-block">Choose Student Fess<sup class="text-danger">*</sup></label>
+        <label for="studentFess" class="form-label  d-block">Choose Seat no<sup class="text-danger">*</sup></label>
         <select name="studentFess" id="studentFess" class="w-100 p-1">
-            <option value="allmonth">Select month</option>
-              <option  value="0">January</option>
-              <option  value="1">February</option>
-              <option   value="2">March</option>
-              <option   value="3">April</option>
-              <option   value="4">May</option>
-              <option   value="5">June</option>
-              <option   value="6">July</option>
-              <option   value="7">August</option>
-              <option   value="8">September</option>
-              <option   value="9">October</option>
-              <option   value="10">November</option>
-              <option   value="11">December</option>
+            <option value="0">Select Seat</option>
+              <option  value="1">1</option>
+              <option  value="2">2</option>
+              <option   value="3">3</option>
         </select>
         @error('timeslot')<span class="text-danger">{{$message}}</span> @enderror
     </div>
@@ -57,6 +48,7 @@
                 <th>state</th>
                 <th>address</th>
                 <th>Timeslot</th>
+                <th>Seat No.</th>
 
             </tr>
         </thead>

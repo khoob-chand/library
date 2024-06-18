@@ -91,6 +91,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="seat" class="form-label ">Seat No.<sup class="text-danger">*</sup></label>
+                            <input type="number" name="seat" class="form-control" id="Seat"  min="1" max="60" value="{{ $customer->seat ==""?old('seat'):  $customer->seat }}">
+                            @error('seat')<span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                </div>
 
             <div class="d-flex justify-center">
                 <button type="submit" class="btn btn-primary mx-auto">Submit</button>

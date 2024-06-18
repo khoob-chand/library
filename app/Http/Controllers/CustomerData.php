@@ -24,9 +24,8 @@ class CustomerData extends Controller
     }
     public function PostCustomerData(Request $req){
 
-        $req->validate(['name'=>'required','email'=>'required|email','state'=>'required','gender'=>'required','age'=>'required','address'=>'required' ,'timeslot'=>'required' ,'joindate'=>'required'] );
+        $req->validate(['name'=>'required','email'=>'required|email','state'=>'required','gender'=>'required','age'=>'required','address'=>'required' ,'timeslot'=>'required' ,'joindate'=>'required','seat'=>'required'] );
             $customer =new  Customer;
-
             $customer->name =$req['name'];
             $customer->email =$req['email'];
             $customer->state =$req['state'];
@@ -35,8 +34,9 @@ class CustomerData extends Controller
             $customer->address =$req['address'];
             $customer->timeslot =$req['timeslot'];
             $customer->joindate =$req['joindate'];
+            $customer->seat_no =$req['seat'];
             $customer->save();
-            $data =['success'=>'Successfully added stident'];
+            $data =['success'=>'Successfully added PadhaiZone student'];
             return redirect('customer')->with($data);
     }
      public function GetCustomerDetails() {
@@ -94,13 +94,13 @@ class CustomerData extends Controller
     }
     public function GetCustomerDetailsApi($selectedTimeslot) {
 
-        //
-        // $object->created_at->format('M')
+
 
         if(!is_null($selectedTimeslot) && $selectedTimeslot!="all") {
-            $customer =Customer::where('timeslot', $selectedTimeslot)->first() ;
+            $customer =Customer::where('timeslot', $selectedTimeslot)->get();
+
             if ($customer) {
-                $customer_detail = [$customer];
+                $customer_detail = $customer;
             }else {
                 $customer_detail =new Customer;
             }

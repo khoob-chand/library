@@ -12,5 +12,5 @@ Route::post('/delete-student',[CustomerData::class,'DeleteStudent']);
 Route::post('/save-contact-us',[ContactController::class,'SaveContactUsPage']);
 Route::get('/settings-service',[SettingsServiceController::class,'GetAllSettingsService']);
 Route::post('/save-settings-service',[SettingsServiceController::class,'SaveSettingsService']);
-Route::delete('/del-setting-service',[SettingsServiceController::class,'DeleteSettingService']);
+Route::post('/del-setting-service',[SettingsServiceController::class,'DeleteSettingService']);
 Route::post('get-student',[CustomerData::class,'GetSelectedStudent']);

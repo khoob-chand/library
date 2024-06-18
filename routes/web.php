@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerData;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SettingsServiceController;
 use App\Http\Controllers\VideosController;
+use App\Http\Controllers\SeatingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,13 +31,14 @@ Route::get('register',[UserController::class ,'GetUserRegistrationForm']);
 Route::post('register',[UserController::class,'PostUserRegistrationForm']);
 Route::get('customer',[CustomerData::class,'CustomerData']);
 Route::post('customer',[CustomerData::class,'PostCustomerData']);
-Route::get('customer-detail',[CustomerData::class,'GetCustomerDetails']);
+Route::get('customer-detail',[CustomerData::class,'GetCustomerDetails'])->middleware('restrictRole:admin');
 Route::get('customer/update/{id}',[CustomerData::class,'GetUpdateCustomerForm']);
 Route::post('customer/update/{id}',[CustomerData::class,'UpdateCustomerData']);
 Route::get('email-verify/{token}',[UserController::class,'EmailVerification']);
 Route::get('contact-us',[ContactController::class,'GetContactUs']);
 Route::get('services',[ServicesController::class,'GetAllServices']);
-Route::get('service-settings',[SettingsServiceController::class,'GetServicePage']);
+Route::get('service-settings',[SettingsServiceController::class,'GetServicePage'])->middleware('restrictRole:admin');
 Route::get('videos',[VideosController::class,'GetAllVideos']);
+Route::get('seat',[SeatingController::class,'Seating']);
 
 

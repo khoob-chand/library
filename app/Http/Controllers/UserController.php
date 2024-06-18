@@ -60,7 +60,7 @@ class UserController extends Controller
                     'error' => 'Email not found Please register !',
                 ]);
             }else{
-                if (Auth::attempt($credentials) && ($user->status == 1 && !is_null($user->email_verified_at))) {
+                if (Auth::attempt($credentials) && ($user->status >= 1 && !is_null($user->email_verified_at))) {
                     $data = [
                         'msg' => 'Welcome to out site '.$user->name
                     ];

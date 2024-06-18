@@ -26,15 +26,6 @@
                     <a class="nav-link text-white" href="{{url('/')}}/customer">Add Student</a>
                 </li>
                 @endif
-                {{-- @if (request()->is('customer-detail'))
-                    <li class="nav-item">
-                        <a class="nav-link text-white bg-primary rounded" href="{{url('/')}}/customer-detail">All Student</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{url('/')}}/customer-detail">All Student</a>
-                    </li>
-                @endif --}}
 
                 @if (request()->is('services'))
                 <li class="nav-item">
@@ -45,6 +36,15 @@
                     <a class="nav-link text-white" href="{{url('/')}}/services">Services</a>
                 </li>
                  @endif
+                 @if (request()->is('seat'))
+                 <li class="nav-item">
+                     <a class="nav-link text-white bg-primary rounded" href="{{url('/')}}/seat">Seat</a>
+                 </li>
+                 @else
+                 <li class="nav-item">
+                     <a class="nav-link text-white" href="{{url('/')}}/seat">Seat</a>
+                 </li>
+                  @endif
 
                 @if (request()->is('contact-us'))
                 <li class="nav-item">
@@ -55,7 +55,7 @@
                     <a class="nav-link text-white" href="{{url('/')}}/contact-us">Contact Us</a>
                 </li>
             @endif
-            @if (request()->is('vidoes'))
+            @if (request()->is('videos'))
             <li class="nav-item">
                 <a class="nav-link text-white bg-primary rounded" href="{{url('/')}}/videos">Videos</a>
             </li>
@@ -63,8 +63,8 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{url('/')}}/videos">Videos</a>
             </li>
-              @endif
-
+            @endif
+            @if (Auth::user()->role == 'admin')
             <div class="btn-group">
                 <button class="nav-link text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                   Settings
@@ -72,9 +72,10 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><a class="dropdown-item nav-link" href="{{url('/')}}/service-settings">Add Services</a></li>
                   <li><a class="dropdown-item nav-link" href="{{url('/')}}/customer-detail">All Students </a></li>
-           
+
                 </ul>
               </div>
+              @endif
                 @if (request()->is('logout'))
                     <li class="nav-item">
                         <a class="nav-link text-white bg-primary rounded" href="{{url('/')}}/logout">Logout</a>
@@ -91,7 +92,16 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{url('/')}}/services">Services</a>
+                        <a class="nav-link text-white" href="{{url('/')}}/seat">Seat</a>
+                    </li>
+                @endif
+                @if (request()->is('services'))
+                    <li class="nav-item">
+                        <a class="nav-link text-white bg-primary rounded" href="{{url('/')}}/seat">Seat</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{url('/')}}/seat">Seat</a>
                     </li>
                 @endif
 
